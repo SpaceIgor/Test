@@ -1,6 +1,14 @@
-from rest_framework import routers
-from tutorial.tutorial.quickstart.views import *
-from django.views.decorators.cache import cache_page
+from django.urls import path
+from . import views
+from rest_framework.routers import DefaultRouter
 
-router = routers.DefaultRouter()
-cache_page(80)(router.register(r'person', PersonView))
+
+
+urlpatterns = [
+   path('user', views.userCreate, name='user'),
+   path('user-list', views.userList, name='user-list'),
+   path('user/<str:pk>', views.userDetail, name='user-detail'),
+
+    ]
+
+
